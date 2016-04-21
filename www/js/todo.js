@@ -22,6 +22,17 @@ var Main = (function (_super) {
         this.addItem = this.addItem.bind(this);
         this.removeItem = this.removeItem.bind(this);
     }
+    Main.prototype.componentDidMount = function () {
+        console.log("did mount");
+        console.log($('.button-collapse'));
+        $('.button-collapse').sideNav('show');
+        //	$('.button-collapse').sideNav('hide');
+        $('.button-collapse').sideNav({
+            menuWidth: 240,
+            edge: 'left',
+            closeOnClick: true
+        });
+    };
     /**
      * Todoリスト入力欄のonChangeで呼ばれるメソッド
      * @param {any} e
@@ -57,7 +68,7 @@ var Main = (function (_super) {
         var todoItems = this.state.todoList.map(function (item) {
             return React.createElement(TodoItem_1.TodoItem, {key: item.key, item: item, onRemove: _this.removeItem});
         });
-        return (React.createElement("div", null, React.createElement("nav", null, React.createElement("div", {className: "nav-wrapper"}, React.createElement("a", {href: "#", className: "brand-logo"}, "TODO"))), React.createElement("div", {className: "row"}, React.createElement("div", {className: "col s12"}, React.createElement("legend", null, "Input:"), React.createElement("input", {type: "text", placeholder: "", value: this.state.newItem.description, onChange: this.changeName}), React.createElement("button", {className: "waves-effect waves-light btn", onClick: this.addItem}, " 登録")), todoItems)));
+        return (React.createElement("div", null, React.createElement("nav", null, React.createElement("div", {className: "nav-wrapper"}, React.createElement("a", {href: "#", className: "brand-logo center"}, "TODO"), React.createElement("a", {href: "#", "data-activates": "slide-out", className: "button-collapse"}, React.createElement("i", {className: "left material-icons"}, "view_headline"))), React.createElement("ul", {id: "slide-out", className: "side-nav"}, React.createElement("li", null, React.createElement("a", {href: "#!"}, "Menu1")), React.createElement("li", null, React.createElement("a", {href: "#!"}, "Menu2")), React.createElement("li", null, React.createElement("a", {href: "#!"}, "Menu3")), React.createElement("li", null, React.createElement("a", {href: "#!"}, "Menu4")), React.createElement("li", null, React.createElement("a", {href: "#!"}, "Menu5")))), React.createElement("div", {className: "row"}, React.createElement("div", {className: "col s12"}, React.createElement("legend", null, "Input:"), React.createElement("input", {type: "text", placeholder: "", value: this.state.newItem.description, onChange: this.changeName}), React.createElement("button", {className: "waves-effect waves-light btn", onClick: this.addItem}, " 登録")), todoItems)));
     };
     return Main;
 }(React.Component));

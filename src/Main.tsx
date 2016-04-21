@@ -35,6 +35,18 @@ export class Main extends React.Component<IMainProps, IMainState> {
         this.addItem = this.addItem.bind(this);
         this.removeItem = this.removeItem.bind(this);
     }
+
+    componentDidMount() {
+	console.log("did mount");
+	console.log($('.button-collapse'));
+	$('.button-collapse').sideNav('show');
+//	$('.button-collapse').sideNav('hide');
+	$('.button-collapse').sideNav({
+	    menuWidth:240,
+	    edge: 'left',
+	    closeOnClick: true
+	});
+    }
     
     /**
      * Todoリスト入力欄のonChangeで呼ばれるメソッド
@@ -77,8 +89,19 @@ export class Main extends React.Component<IMainProps, IMainState> {
             <div>
                 <nav>
                     <div className="nav-wrapper">
-                        <a href="#" className="brand-logo">TODO</a>
+                <a href="#" className="brand-logo center">TODO</a>
+		    <a href="#" data-activates="slide-out" className="button-collapse"><i className="left material-icons">view_headline</i></a>
+		
+		
                     </div>
+		    <ul id="slide-out" className="side-nav">
+                        <li><a href="#!">Menu1</a></li>
+		        <li><a href="#!">Menu2</a></li>
+		        <li><a href="#!">Menu3</a></li>
+		        <li><a href="#!">Menu4</a></li>
+		        <li><a href="#!">Menu5</a></li>
+	            </ul>
+		   
                 </nav>
                 <div className="row">
                     <div className="col s12">

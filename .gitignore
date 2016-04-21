@@ -1,4 +1,7 @@
 .tmp
 node_modules
+www/bc
+platforms
+typings
 
 
